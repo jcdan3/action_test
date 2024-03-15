@@ -50,8 +50,7 @@ jobs:
             echo run_gosec: ${{ github.event.inputs.run_gosec }}
             echo event_name: ${{ github.event_name }}
             echo run_gosec: ${{ github.event_name == 'schedule' }} 
-            echo run_gosec: (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_nancy == 'true'}})
-            echo run_gosec: ${{ github.event_name == 'schedule' }} || (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_nancy == 'true'}})
+            echo right_side: (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_nancy == 'true'}})
           
             
 
