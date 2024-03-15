@@ -51,11 +51,12 @@ jobs:
             echo event_name: ${{ github.event_name }}
             echo event_name_is_schedule: ${{ github.event_name == 'schedule' }} 
             echo right_side: ${{ github.event_name == 'workflow_dispatch'  &&  github.event.inputs.run_nancy == 'true'}}
+            echo all: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' &&  github.event.inputs.run_nancy == 'true')}}
           
             
 
   run_nancy:
-    if: ${{ github.event_name == 'schedule' }} || (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_nancy == 'true'}})
+    if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' &&  github.event.inputs.run_nancy == 'true')}}
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
