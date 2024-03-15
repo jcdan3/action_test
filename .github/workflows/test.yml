@@ -50,7 +50,7 @@ jobs:
           args: --timeout=15m
 
   run_nancy:
-    if: ${{ github.event_name == 'schedule' }} || (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_nancy }})
+    if: ${{ github.event_name == 'schedule' }} || (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_nancy == 'true'}})
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -72,7 +72,7 @@ jobs:
           nancyCommand: sleuth --exclude-vulnerability-file=.nancy-ignore
 
   run_gosec:
-    if: ${{ github.event_name == 'schedule' }} || (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_gosec }})
+    if: ${{ github.event_name == 'schedule' }} || (${{ github.event_name == 'workflow_dispatch' }} && ${{ github.event.inputs.run_gosec == 'true' }})
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
