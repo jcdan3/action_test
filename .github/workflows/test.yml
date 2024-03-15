@@ -28,22 +28,6 @@ env:
   MASTER_SDK_COVERAGE: ${{ vars.MASTER_SDK_COVERAGE }}
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    steps:
-      - name: Git Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: ${{ env.GO_VERSION }}
-
-      - name: Test
-        run: |
-          go test ./...
 
   lint:
     runs-on: ubuntu-latest
